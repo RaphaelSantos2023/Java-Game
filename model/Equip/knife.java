@@ -1,4 +1,4 @@
-package model;
+package model.Equip;
 
 public class knife extends Equipamento{
 

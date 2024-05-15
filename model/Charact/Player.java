@@ -1,11 +1,9 @@
-package model;
-
-import java.util.ArrayList;
+package model.Charact;
 
 public class Player {
     
     private float Money;
     private int hp;
     private String name;
-    private ArrayList Equipamentos = new ArrayList<Equipamento>();
+    //private weapon weapon
 }

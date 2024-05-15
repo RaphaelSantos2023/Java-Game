@@ -1,8 +1,4 @@
-package view;
 
-import model.GButton;
-import model.GPanelButton;
-import model.GTextArea;
 
 import java.awt.Color;
 import java.awt.Container;
@@ -12,6 +8,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import model.GButton;
+import model.GPanelButton;
+import model.GTextArea;
 
 public class Game{
 
@@ -95,20 +94,41 @@ public class Game{
         SetingTxtACj("Vindo de uma longe viage,você é um goblin quequer estabelecer\numa vida na cidade de Morabi. Finalmente,os portões massisos estão a sua frente",">","","","");
     }
     
-    public void TalkGuard(){
-        position = "Guard";
-        SetingTxtACj("Logo que o guarda percebe sua presença, a fese se contorce em um misto de nojo e desprezo\n\n\nGuard:O que você quer?","*Gostaria de entrar*","*Você fede*","*Nada de mais*","");
-    }
-    
     public void GateFront(){
         position = "GateFront";
         SetingTxtACj("Um guarda espera aos pés do portão","Falar com ele","Lutar","Sair","");
     }
     
+    public void TalkGuard(){
+        position = "GuardTalk";
+        SetingTxtACj("Guard:O que você quer?","*Gostaria de entrar*","*Você fede*","*Nada de mais*","");
+    }
+
+    public  void InsultingGuard(){
+        position = "GuardInsulted";
+        SetingTxtACj("Guard:O que você disse?","*Além de fedido é surdo?*","*Nada não...*","","");
+    }
+
+    public void EntreRequest(){
+        position = "EntreRequest";
+        SetingTxtACj("Guard:(Olhando-te de cima a baixo)Não deixamos qualquer um entrar.","*Tem algo que posso fazer?*","*...*","","");
+    }
+
+    public void ReciveQuest(){
+        position = "ReciveQuest";
+        SetingTxtACj("Guard:(Pensativo)Se você provar utilidade a cidade ou receber a altorização de um morador, talvez","*Vou ver o que consigo*","","","");
+    }
+
     public void CrossRoad(){
         position = "CrossRoad";
         SetingTxtACj("Você etá numa encruzilhada lamacenta.\nAo norte tem uma floresta.\nAo leste tem uma taverna.\nAo oeste um acampamento.\nAo Sul a cidade","Floresta","Taverna","Acampamento","Cidade");
     }
+
+    public void FightGuard(){
+        position = "FightGuard";
+        SetingTxtACj("Guard:Hora essa, seu ladrãosinho!", ">","", "", "");
+    }
+
     public class ChoiceCross implements ActionListener{
 
         @Override
@@ -137,11 +157,51 @@ public class Game{
                         case "ch1":
                             TalkGuard();
                         break;
+                        case  "ch2":
+                            FightGuard();
+                        break;
                         case "ch3":
                             CrossRoad();
                         break;
                     }
                     
+                break;
+                case "GuardTalk":
+                    switch(choice){
+                        case "ch1":
+                            EntreRequest();
+                        break;
+                        case "ch2":
+                            FightGuard();
+                        break;
+                        case "ch3":
+                            GateFront();
+                        break;
+                    }
+                break;
+                case "EntreRequest":
+                    switch(choice){
+                        case "ch1":
+                            ReciveQuest();
+                        break;
+                        case "ch2":
+                            TalkGuard();
+                        break;
+                    }
+                break;
+                case "ReciveQuest":
+                    switch(choice){
+                        case "ch1":
+                            TalkGuard();
+                        break;
+                    }
+                break;
+                case "FightGuard":
+                    switch(choice){
+                        case "ch1":
+                            
+                        break;
+                    }
                 break;
             }
         }

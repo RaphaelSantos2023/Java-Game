@@ -2,7 +2,6 @@ package model;
 
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.awt.TextArea;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
