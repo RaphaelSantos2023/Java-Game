@@ -4,7 +4,7 @@ public class Equipamento {
     
     private int Durabilidade;
     private String name;
-    private  float Damege;
+    private int Damege;
 
     public int getDurabilidade() {
         return Durabilidade;
@@ -22,11 +22,11 @@ public class Equipamento {
         this.name = name;
     }
 
-    public float getDamege() {
+    public int getDamege() {
         return Damege;
     }
 
-    public void setDamege(float Damege) {
+    public void setDamege(int Damege) {
         this.Damege = Damege;
     }
 

@@ -4,6 +4,7 @@ public class knife extends Equipamento{
 
     public knife(){
         this.setName("knife");
-        this.setDamege(1.2f);
+        this.setDamege(5);
+        this.setDurabilidade(10);
     }
 }

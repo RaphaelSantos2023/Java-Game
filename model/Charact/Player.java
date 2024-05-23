@@ -1,9 +1,13 @@
 package model.Charact;
 
-public class Player {
+import model.Equip.*;
+
+public class Player extends Character{
     
-    private float Money;
-    private int hp;
-    private String name;
-    //private weapon weapon
+    public Player(){
+        this.setHP(10);
+        this.setMoney(0);
+        this.setName("Você");
+        this.setWeapon(new knife());
+    }
 }

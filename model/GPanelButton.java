@@ -47,6 +47,15 @@ public class GPanelButton extends JPanel{
         add(but4);
     }
     
+    public GPanelButton(JButton but1, JButton but2, JButton but3){
+        super();
+        setBackground(Color.red);
+        setLayout(new GridLayout(3,1));
+        add(but1);
+        add(but2);
+        add(but3);
+    }
+
     public GPanelButton(JLabel label1, JLabel label2){
         super();
         setBackground(Color.blue);
