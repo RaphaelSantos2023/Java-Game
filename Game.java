@@ -11,15 +11,18 @@ import javax.swing.JPanel;
 import model.GButton;
 import model.GPanelButton;
 import model.GTextArea;
+import view.SettingComumView;
 
 public class Game{
 
     JFrame window;
     String position;
-    JPanel panelTitleLabel,ButtonStartPanel,TxtPanel,ButtonsPanel;
+    JPanel panelTitleLabel,ButtonStartPanel;
+    GPanelButton TxtPanel,ButtonsPanel;
     Container con;
     ChoiceCross Cross = new ChoiceCross();
-    GTextArea Moving,ocombatLog;
+    GTextArea Moving, combatLog;
+    SettingComumView SCV = new  SettingComumView();
     GButton StartButton, ch1,ch2,ch3,ch4;
     JLabel titleLabel;
     Font fontTitleLabel = new Font("Times New Romans",Font.PLAIN,50);
@@ -32,33 +35,24 @@ public class Game{
     
     public void SetingWindow(){
         position = "Start";
+    
         window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setLayout(null);
         window.setSize(800,600);
-        window.getContentPane().setBackground(Color.black);
-        
-        con = window.getContentPane();
-        
+        window.getContentPane().setBackground(Color.BLACK);
+    
         titleLabel = new JLabel("TesteRPG");
-        titleLabel.setFont(fontTitleLabel);
-        titleLabel.setForeground(Color.white);
-        
         panelTitleLabel = new GPanelButton(titleLabel);
-        panelTitleLabel.setBounds(250, 150, 300, 150);
-        
         StartButton = new GButton("Start", Cross);
-        StartButton.setFont(new Font("Times New Romans",Font.PLAIN,30));
-        StartButton.setText("Start");
-        
         ButtonStartPanel = new GPanelButton(StartButton);
-        ButtonStartPanel.setBounds(300,350,200,100);
-        
-        con.add(panelTitleLabel);
-        con.add(ButtonStartPanel);
-        
+    
+        con = window.getContentPane();
+    
+        SCV.SetWindows(con, titleLabel, panelTitleLabel, ButtonStartPanel, fontTitleLabel, StartButton);
         window.setVisible(true);
     }
+    
     
     public void SetingTxtACj(String txt, String chT1, String chT2, String chT3, String chT4){
         Moving.setText(txt);
@@ -69,23 +63,16 @@ public class Game{
     }
     
     public void setComponents(){
-        Moving = new GTextArea();
-        Moving.setBounds(0,5, 600, 200);
-        Moving.setLineWrap(true);
         
+        Moving = new GTextArea();
         ch1 = new GButton("ch1",Cross);
         ch2 = new GButton("ch2",Cross);
         ch3 = new GButton("ch3",Cross);
         ch4 = new GButton("ch4",Cross);
-        
         TxtPanel = new GPanelButton(Moving);
-        TxtPanel.setBounds(100, 70, 600, 200);
-        
         ButtonsPanel = new GPanelButton(ch1,ch2,ch3,ch4);
-        ButtonsPanel.setBounds(275,300,250,250);
-        
-        con.add(TxtPanel);
-        con.add(ButtonsPanel);
+
+        SCV.setComponentGame(con, Moving, TxtPanel, ButtonsPanel , ch1, ch2, ch3, ch4);
     }
     
     public void Introduction(){
@@ -128,7 +115,6 @@ public class Game{
         position = "FightGuard";
         SetingTxtACj("Guard:Hora essa, seu ladrãosinho!", ">","", "", "");
     }
-
     public class ChoiceCross implements ActionListener{
 
         @Override
@@ -139,8 +125,8 @@ public class Game{
                 case "Start":
                     switch(choice){
                         case "Start":
-                            panelTitleLabel.setVisible(false);
-                            ButtonStartPanel.setVisible(false);
+                        panelTitleLabel.setVisible(false);
+                        ButtonStartPanel.setVisible(false);
                             Introduction();
                         break;
                     }

@@ -1,7 +1,8 @@
 package model.Charact;
 
-import model.Equip.*;
 import javax.swing.ImageIcon;
+import model.Charact.Character;
+import model.Equip.*;
 
 public class Character {
 
@@ -9,7 +10,7 @@ public class Character {
     private String name;
     private Equipamento weapon;
     private int money;
-    private ImageIcon imagem;
+    private ImageIcon imagem, backGroundImg;
 
     public Character(){}
 
@@ -33,6 +34,10 @@ public class Character {
         return imagem;
     }
 
+    public ImageIcon getBackground(){
+        return backGroundImg;
+    }
+
     public void setName(String name){
         this.name = name;
     }
@@ -54,6 +59,11 @@ public class Character {
     }
 
     public void Atack(Character chart){
-        chart.setHp(chart.getHp() - this.getWeapon().getDamege());
+        chart.setHP(chart.getHP()- this.getWeapon().getDamege());
     }
+
+    public void setBackGroundImg(String backGroundImg) {
+        this.backGroundImg = new ImageIcon(backGroundImg);
+    }
+    
 }
