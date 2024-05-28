@@ -1,16 +1,16 @@
 package model.Charact;
 
-import javax.swing.ImageIcon;
 import model.Charact.Character;
 import model.Equip.*;
 
 public class Character {
 
     private int hp;
+    private int ChanceHit;
     private String name;
     private Equipamento weapon;
     private int money;
-    private ImageIcon imagem, backGroundImg;
+    private String imagem, backGroundImg;
 
     public Character(){}
 
@@ -22,6 +22,9 @@ public class Character {
         return hp;
     }
 
+    public int getChanceHit(){
+        return ChanceHit;
+    }
     public Equipamento getWeapon(){
         return weapon;
     }
@@ -30,11 +33,11 @@ public class Character {
         return money;
     }
 
-    public ImageIcon getImagem(){
+    public String getImagem(){
         return imagem;
     }
 
-    public ImageIcon getBackground(){
+    public String getBackground(){
         return backGroundImg;
     }
 
@@ -46,6 +49,10 @@ public class Character {
         this.hp = hp;
     }
 
+    public void setChanceHit(int hit){
+        this.ChanceHit = hit;
+    }
+
     public void setWeapon(Equipamento weapon){
         this.weapon = weapon;
     }
@@ -54,7 +61,7 @@ public class Character {
         this.money = money;
     }
 
-    public void setImagem(ImageIcon imagem){
+    public void setImagem(String imagem){
         this.imagem = imagem;
     }
 
@@ -63,7 +70,7 @@ public class Character {
     }
 
     public void setBackGroundImg(String backGroundImg) {
-        this.backGroundImg = new ImageIcon(backGroundImg);
+        this.backGroundImg = backGroundImg;
     }
     
 }

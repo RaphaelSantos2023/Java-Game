@@ -16,6 +16,5 @@ public class GButton extends JButton{
         setActionCommand(command);
         addActionListener(ActL);
     }
-    
 
 }

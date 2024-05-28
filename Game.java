@@ -1,31 +1,32 @@
 
 
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import model.Charact.Guard;
+import model.Charact.Player;
 import model.GButton;
 import model.GPanelButton;
 import model.GTextArea;
-import view.SettingComumView;
+import view.CombatView;
 
 public class Game{
 
     JFrame window;
     String position;
     JPanel panelTitleLabel,ButtonStartPanel;
-    GPanelButton TxtPanel,ButtonsPanel;
+    GPanelButton TxtPanel,ButtonsPanel,StartPanel, CenterStartLocation,mainPanel;
     Container con;
     ChoiceCross Cross = new ChoiceCross();
     GTextArea Moving, combatLog;
-    SettingComumView SCV = new  SettingComumView();
     GButton StartButton, ch1,ch2,ch3,ch4;
     JLabel titleLabel;
-    Font fontTitleLabel = new Font("Times New Romans",Font.PLAIN,50);
+    public CombatView CV;
+    Player p1 = new Player();
+    Font fontTitleLabel = new Font("Times New Romans",Font.PLAIN,60);
 
     public static void main(String[] args){
         Game game = new Game();
@@ -38,18 +39,34 @@ public class Game{
     
         window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setLayout(null);
-        window.setSize(800,600);
+        window.setLayout(new BorderLayout());
+        window.setSize(1200,700);
         window.getContentPane().setBackground(Color.BLACK);
     
         titleLabel = new JLabel("TesteRPG");
         panelTitleLabel = new GPanelButton(titleLabel);
         StartButton = new GButton("Start", Cross);
         ButtonStartPanel = new GPanelButton(StartButton);
-    
+
+        StartPanel = new GPanelButton();
+
+        CenterStartLocation = new GPanelButton();
+        CenterStartLocation.setLayout(new GridLayout(2,1));
+        
+        titleLabel.setFont(fontTitleLabel);
+        titleLabel.setForeground(Color.white);
+        
+        StartButton.setFont(new Font("Times New Romans",Font.PLAIN,30));
+        StartButton.setText("Start");
+        
+        CenterStartLocation.add(panelTitleLabel);
+        CenterStartLocation.add(StartButton);
+
+        StartPanel.add(CenterStartLocation,BorderLayout.CENTER);
+
         con = window.getContentPane();
-    
-        SCV.SetWindows(con, titleLabel, panelTitleLabel, ButtonStartPanel, fontTitleLabel, StartButton);
+        
+        con.add(StartPanel,BorderLayout.CENTER);
         window.setVisible(true);
     }
     
@@ -72,13 +89,18 @@ public class Game{
         TxtPanel = new GPanelButton(Moving);
         ButtonsPanel = new GPanelButton(ch1,ch2,ch3,ch4);
 
-        SCV.setComponentGame(con, Moving, TxtPanel, ButtonsPanel , ch1, ch2, ch3, ch4);
+        mainPanel = new GPanelButton();
+        mainPanel.setLayout(new GridLayout(2,1));
+        mainPanel.add(TxtPanel);
+        mainPanel.add(ButtonsPanel);
+
+        con.add(mainPanel, BorderLayout.CENTER);
     }
     
     public void Introduction(){
         position = "Introduction";
         setComponents();
-        SetingTxtACj("Vindo de uma longe viage,você é um goblin quequer estabelecer\numa vida na cidade de Morabi. Finalmente,os portões massisos estão a sua frente",">","","","");
+        SetingTxtACj("Vindo de uma longe viage,\nvocê é um goblin quequer estabelecer\numa vida na cidade de Morabi. \nFinalmente,os portões massisos estão a sua frente",">","","","");
     }
     
     public void GateFront(){
@@ -125,8 +147,7 @@ public class Game{
                 case "Start":
                     switch(choice){
                         case "Start":
-                        panelTitleLabel.setVisible(false);
-                        ButtonStartPanel.setVisible(false);
+                            StartPanel.setVisible(false);
                             Introduction();
                         break;
                     }
@@ -185,7 +206,9 @@ public class Game{
                 case "FightGuard":
                     switch(choice){
                         case "ch1":
-                            
+                        mainPanel.setVisible(false);
+                        CV = new CombatView(p1, new Guard());
+                        window.add(CV);
                         break;
                     }
                 break;

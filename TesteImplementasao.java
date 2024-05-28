@@ -1,82 +1,57 @@
-import java.awt.Color;
-import java.awt.GridBagConstraints;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import model.GPanelButton;
-import model.GTextArea;
+import java.awt.*;
+import javax.swing.*;
+import model.ResponsiveImagePanel;
 
-public class TesteImplementasao extends JPanel{
+public class TesteImplementasao extends JPanel {
+    
+    public JPanel ButtonP,TextP,TurnP,StatusPlayer, SouthPanel;
+    public ResponsiveImagePanel RIP = new  ResponsiveImagePanel("./image/BackGround_Sprite.png");
+    public JButton Botao1,Botao2,Botao3;
+    public JTextArea txt;
 
-    public JTextArea Log = new JTextArea();
-    public JLabel ImagemEnemy,StatusPlayer, EnemyHealth, BackGround;
+    public TesteImplementasao(){
+        setLayout(new BorderLayout());
 
-    public JButton Ch1,Ch2,Ch3;
+        Botao1 = new JButton("Atack");
+        Botao2 = new JButton("Defend");
+        Botao3 = new JButton("Run");
 
-    public GPanelButton CombatPanel = new GPanelButton();
-    public GPanelButton BackGroundPanel = new GPanelButton();
-    public GPanelButton ImagemPlayerPanel;
-    public GPanelButton CombatLogPanel = new GPanelButton(Log);
-    public GPanelButton ButtonsPanel;
+        ButtonP = new JPanel(new FlowLayout());
+        ButtonP.add(Botao1);
+        ButtonP.add(Botao2);
+        ButtonP.add(Botao3);
 
-    public GridBagConstraints constraints = new GridBagConstraints();
-    public GPanelButton StatusPlayerPanel = new GPanelButton();
-    public GPanelButton PlayerImage = new GPanelButton();
-    public GPanelButton EnemyPanel;
+        txt = new JTextArea();
+        txt.setText("-Atack\n-Defesa");
+        TextP = new JPanel();
+        TextP.add(txt);
+
+        StatusPlayer = new JPanel();
+        StatusPlayer.add(new JLabel("Aqui tem o hp do player"));
+
+        TurnP = new JPanel();
+        TurnP.add(new JLabel("Aqui tem o hp"));
+
+        SouthPanel = new JPanel();
+        SouthPanel.add(StatusPlayer);
+        SouthPanel.add(ButtonP);
+
+        add(SouthPanel, BorderLayout.SOUTH);
+        add(TextP,BorderLayout.EAST);
+        add(TurnP,BorderLayout.NORTH);
+        add(RIP,BorderLayout.CENTER);
+    }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("GridBagLayout Example");
+        // Criando o JFrame
+        JFrame frame = new JFrame("BorderLayout Example");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 300);
+        frame.add(new TesteImplementasao());
 
-        TesteImplementasao T = new TesteImplementasao();
-        T.testeDecombat();
-
-        frame.add(T);
-        frame.pack();
+        // Tornando o JFrame visível
         frame.setVisible(true);
     }
 
-    public void testeDecombat(){
-        CombatLogPanel.setBackground(Color.BLUE);
-        StatusPlayerPanel.setBackground(Color.GREEN);
-        PlayerImage.add(new JLabel(new ImageIcon("image/Goblin.jpeg")));
-        GTextArea CombatLog = new GTextArea("Textao ssdgsdfghsgsdfgtdsfgsdgagsgag");
-        Ch1 = new JButton("fd");
-        Ch2 = new JButton("gfh");
-        Ch3 = new JButton("sdf");
-
-        ButtonsPanel = new GPanelButton();
-        ButtonsPanel.add(Ch1);
-        ButtonsPanel.add(Ch2);
-        ButtonsPanel.add(Ch3);
-        
-        StatusPlayerPanel.add(new JLabel("sdsdasdgsdgsadfgdssdgfa"));
-
-        constraints.gridx = 0;
-        constraints.gridy = 1;
-        BackGround = new JLabel(new ImageIcon("image/GateBackGround_Sprite.png"));
-        BackGroundPanel.add(BackGround);
-        CombatPanel.add(BackGroundPanel,constraints);
-
-        constraints.gridx = 1;
-        constraints.gridy = 1;
-        constraints.gridheight = 5;
-        CombatLogPanel.add(CombatLog);
-        CombatPanel.add(CombatLogPanel,constraints);
-
-        constraints.gridx = 0;
-        constraints.gridy = 0;
-        StatusPlayerPanel.add(PlayerImage,constraints);
-        constraints.gridx = 0;
-        constraints.gridy = 1;
-        StatusPlayerPanel.add(ButtonsPanel,constraints);
-
-        constraints.gridx = 0;
-        constraints.gridy = 2;
-        CombatPanel.add(StatusPlayerPanel,constraints);
-
-    }
 }
+

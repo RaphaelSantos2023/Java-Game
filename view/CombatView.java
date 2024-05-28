@@ -1,44 +1,104 @@
 package view;
 
-import java.awt.GridBagConstraints;
-import javax.swing.JLabel;
-import javax.swing.JTextArea;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
 import model.Charact.Character;
+import model.Charact.Player;
 import model.GButton;
 import model.GPanelButton;
 import model.GTextArea;
 
-public class CombatView {
+public class CombatView extends JPanel{
+
+    public CombatChoiceCross Cross = new CombatChoiceCross();
+    public GPanelButton ButtonP,TextP,TurnP,StatusPlayer, SouthPanel;
+    public Player player;
+    public ImageIcon BackGround;
+    public Character enemy;
+    public GButton Botao1,Botao2,Botao3;
+    public Font textStatus = new Font("Times New Romans",Font.PLAIN,30);
+    public String position,statusPlayerS,statusEnemyS;
+    public GTextArea txt;
+
+    public CombatView(Player p1, Character en){
+
+        player = p1;
+        enemy = en;
+        BackGround = new  ImageIcon(en.getBackground());
+
+        setLayout(new BorderLayout());
+
+        Botao1 = new GButton("Atack",Cross);
+        Botao1.setText("Atack");
+        Botao2 = new GButton("Defend",Cross);
+        Botao2.setText("Defend");
+        Botao3 = new GButton("Run",Cross);
+        Botao3.setText("Run");
+
+        ButtonP = new GPanelButton();
+        ButtonP.setLayout(new GridLayout(4,1));
+
+        ButtonP.add(Botao1);
+        ButtonP.add(Botao2);
+        ButtonP.add(Botao3);
+
+        txt = new GTextArea();
+        txt.setFont(new Font("Times New Romans",Font.PLAIN,25));
+        txt.setText("-Um "+en.getName() +" Apareceu no caminho");
+
+        TextP = new GPanelButton();
+        TextP.add(txt);
+
+        StatusPlayer = new GPanelButton();
+        StatusPlayer.add(LabelUpdate(1));
+
+        ButtonP.add(StatusPlayer);
+        ButtonP.add(Botao1);
+        ButtonP.add(Botao2);
+        ButtonP.add(Botao3);
+
+        TurnP = new GPanelButton();
+        TurnP.add(LabelUpdate(2));
+
+        add(ButtonP, BorderLayout.SOUTH);
+        add(TextP,BorderLayout.EAST);
+        add(TurnP,BorderLayout.NORTH);
+        add(new JLabel(BackGround),BorderLayout.CENTER);
+
+        setVisible(true);
+    }
+
+    public JLabel LabelUpdate(int caseCharacter){
+        statusPlayerS = "HP: "+ player.getHP()+"\n Weapon: "+ player.getWeapon().getName();
+        statusEnemyS = enemy.getName() + ":" + enemy.getHP();
+
+        if(caseCharacter == 1){
+            JLabel StatusLabelPlayer = new JLabel(statusPlayerS);
+            StatusLabelPlayer.setFont(textStatus);
+            return  StatusLabelPlayer;
+        }else{
+            JLabel StatusLabelEnemy = new JLabel(statusEnemyS);
+            StatusLabelEnemy.setFont(textStatus);
+            return  StatusLabelEnemy;
+        }
+    }
+
+    public class CombatChoiceCross implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String choice = e.getActionCommand();
+            
+            switch(position){
+                case "Start":
+                    switch(choice){
+                        case "Start":
+                            break;
+                    }
+                }
     
-    public JTextArea Log = new JTextArea();
-    public JLabel ImagemEnemy,StatusPlayer, EnemyHealth, BackGround;
-
-    public GButton Ch1,Ch2,Ch3;
-
-    public GPanelButton CombatPanel = new GPanelButton();
-    public GPanelButton BackGroundPanel = new GPanelButton();
-    public GPanelButton ImagemPlayerPanel;
-    public GPanelButton CombatLogPanel = new GPanelButton(Log);
-    public GPanelButton ButtonsPanel = new GPanelButton(Ch1,Ch2,Ch3);
-
-    public GridBagConstraints constraints = new GridBagConstraints();
-    public GPanelButton StatusPlayerPanel = new GPanelButton();
-    public GPanelButton PlayerImage = new GPanelButton();
-    public GPanelButton EnemyPanel;
-
-    public void setCombatUI(Character enemy, Character Player){
-        ImagemEnemy = new JLabel(enemy.getImagem());
-        StatusPlayer = new JLabel("HP: "+ Player.getHP()+ " Weapon: "+ Player.getWeapon());
-        EnemyHealth = new JLabel(enemy.getName()+": "+enemy.getHP());
-
-    }
-
-    public void setScreen(Character enemy, GTextArea CombatLog){
-    }
-
-    public void setButtonsPanel(){
-        Ch1 = new GButton("Action",null);
-        Ch2 = new GButton("Talk",null);
-        Ch3 = new GButton("Run",null);
+        }
     }
 }
