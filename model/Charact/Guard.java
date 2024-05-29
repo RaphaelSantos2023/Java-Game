@@ -10,5 +10,6 @@ public class Guard extends Character{
         this.setName("Guarda");
         this.setWeapon(new Spear());
         this.setBackGroundImg("image/GateBackGround_Sprite.png");
+        this.setAggressiveness(17);
     }
 }

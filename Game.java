@@ -21,7 +21,7 @@ public class Game{
     GPanelButton TxtPanel,ButtonsPanel,StartPanel, CenterStartLocation,mainPanel;
     Container con;
     ChoiceCross Cross = new ChoiceCross();
-    GTextArea Moving, combatLog;
+    GTextArea Moving;
     GButton StartButton, ch1,ch2,ch3,ch4;
     JLabel titleLabel;
     public CombatView CV;
@@ -81,7 +81,7 @@ public class Game{
     
     public void setComponents(){
         
-        Moving = new GTextArea();
+        Moving = new GTextArea(window);
         ch1 = new GButton("ch1",Cross);
         ch2 = new GButton("ch2",Cross);
         ch3 = new GButton("ch3",Cross);
@@ -207,7 +207,7 @@ public class Game{
                     switch(choice){
                         case "ch1":
                         mainPanel.setVisible(false);
-                        CV = new CombatView(p1, new Guard());
+                        CV = new CombatView(p1, new Guard(), window);
                         window.add(CV);
                         break;
                     }

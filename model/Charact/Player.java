@@ -11,5 +11,6 @@ public class Player extends Character{
         this.setMoney(0);
         this.setName("Você");
         this.setWeapon(new knife());
+        this.setAggressiveness(10);
     }
 }

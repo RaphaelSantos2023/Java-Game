@@ -1,5 +1,6 @@
 package view;
 
+import control.control;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,8 +22,9 @@ public class CombatView extends JPanel{
     public Font textStatus = new Font("Times New Romans",Font.PLAIN,30);
     public String position,statusPlayerS,statusEnemyS;
     public GTextArea txt;
+    public control crt;
 
-    public CombatView(Player p1, Character en){
+    public CombatView(Player p1, Character en, JFrame window){
 
         player = p1;
         enemy = en;
@@ -38,13 +40,13 @@ public class CombatView extends JPanel{
         Botao3.setText("Run");
 
         ButtonP = new GPanelButton();
-        ButtonP.setLayout(new GridLayout(4,1));
+        ButtonP.setLayout(new GridLayout(1,3));
 
         ButtonP.add(Botao1);
         ButtonP.add(Botao2);
         ButtonP.add(Botao3);
 
-        txt = new GTextArea();
+        txt = new GTextArea(window);
         txt.setFont(new Font("Times New Romans",Font.PLAIN,25));
         txt.setText("-Um "+en.getName() +" Apareceu no caminho");
 
@@ -61,6 +63,8 @@ public class CombatView extends JPanel{
 
         TurnP = new GPanelButton();
         TurnP.add(LabelUpdate(2));
+
+        crt = new control(p1, en, txt, ButtonP);
 
         add(ButtonP, BorderLayout.SOUTH);
         add(TextP,BorderLayout.EAST);
@@ -90,15 +94,17 @@ public class CombatView extends JPanel{
         @Override
         public void actionPerformed(ActionEvent e) {
             String choice = e.getActionCommand();
+            ButtonP.setVisible(false);
+            switch(choice){
+                
+                case "Atack":
+                     crt.turns("Atack");
+                break;
+                case "Defend":
+                    crt.turns("Defend");
+                break;
+            }
             
-            switch(position){
-                case "Start":
-                    switch(choice){
-                        case "Start":
-                            break;
-                    }
-                }
-    
         }
     }
 }
