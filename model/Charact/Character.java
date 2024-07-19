@@ -1,99 +1,142 @@
 package model.Charact;
 
-import model.Charact.Character;
 import model.Equip.*;
+import java.util.Random;
 
 public class Character {
 
     private int hp;
-    private int ChanceHit;
-    private int aggressiveness;
     private String name;
+    private String StateEfect = "none";
     private Equipamento weapon;
-    private int money;
-    private String imagem, backGroundImg;
-    private boolean Atacking;
+    private int Dex, Str, Luck, Inte, HpMax, StrMax;
+    private int money, DiceValue;
+    private String imagem, BackGround;
+    private Random rand = new Random();
 
-    public Character(){}
+    public int getDex() {
+        return this.Dex;
+    }
 
-    public String getName(){
+    public int getStr() {
+        return this.Str;
+    }
+
+    public int getLuck() {
+        return this.Luck;
+    }
+
+    public int getInte() {
+        return this.Inte;
+    }
+
+    public String getName() {
         return name;
     }
 
-    public int getHP(){
+    public String getStateEfect() {
+        return StateEfect;
+    }
+
+    public int getHP() {
         return hp;
     }
 
-    public int getChanceHit(){
-        return ChanceHit;
-    }
-    public Equipamento getWeapon(){
+    public Equipamento getWeapon() {
         return weapon;
     }
 
-    public int getMoney(){
+    public int getMoney() {
         return money;
     }
 
-    public String getImagem(){
+    public String getImagem() {
         return imagem;
     }
 
-    public String getBackground(){
-        return backGroundImg;
+    public int getDiceValue() {
+        return DiceValue;
     }
 
-    public boolean getAtacking(){
-        return Atacking;
+    public String getBackGround() {
+        return BackGround;
     }
 
-    public int getAggressiveness(){
-        return aggressiveness;
+    public void setDex(int Dex) {
+        this.Dex = Dex;
     }
 
-    public void setName(String name){
+    public void setStr(int Str) {
+        this.Str = Str;
+    }
+
+    public void setLuck(int Luck) {
+        this.Luck = Luck;
+    }
+
+    public void setInte(int Inte) {
+        this.Inte = Inte;
+    }
+
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setHP(int hp){
+    public void setStateEfect(String StateEfect) {
+        this.StateEfect = StateEfect;
+    }
+
+    public void setHP(int hp) {
         this.hp = hp;
     }
 
-    public void setChanceHit(int hit){
-        this.ChanceHit = hit;
-    }
-
-    public void setAggressiveness(int aggressiveness){
-        this.aggressiveness = aggressiveness;
-    }
-
-    public void setWeapon(Equipamento weapon){
+    public void setWeapon(Equipamento weapon) {
         this.weapon = weapon;
     }
 
-    public void setMoney(int money){
+    public void setMoney(int money) {
         this.money = money;
     }
 
-    public void setImagem(String imagem){
+    public void setImagem(String imagem) {
         this.imagem = imagem;
     }
 
-    public void setBackGroundImg(String backGroundImg) {
-        this.backGroundImg = backGroundImg;
-    }
-    
-    public void setAtacking(boolean Atacking){
-        this.Atacking = Atacking;
-    }
-    public void Atack(Character chart){
-        chart.setHP(chart.getHP()- this.getWeapon().getDamege());
-        Atacking= true;
+    public void setBackGround(String BackGround) {
+        this.BackGround = BackGround;
     }
 
-    public void Defend(Character chart){
-        if(chart.getAtacking()){
-            this.setHP(this.getHP()+chart.getWeapon().getDamege());
+    public void setDiceValue(int dice) {
+        this.DiceValue = dice;
+    }
+
+    public int Atack(Character chart) {
+        int damage = rand.nextInt(this.getWeapon().getDamage());
+        if (chart.getStr() > 0) {
+            chart.setStr(chart.getStr() - damage);
+        } else {
+            chart.setHP(chart.getHP() - damage);
         }
+        return damage;
+    }
+
+    public int getHpMax() {
+        return this.HpMax;
+    }
+
+    public void setHpMax(int HpMax) {
+        this.HpMax = HpMax;
+    }
+
+    public int getStrMax() {
+        return this.StrMax;
+    }
+
+    public void setStrMx(int str) {
+        this.StrMax = str;
+    }
+
+    public void Wear(Equipamento equip) {
+        setStr(getStrMax() + equip.getArmo());
     }
 }

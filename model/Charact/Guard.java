@@ -1,15 +1,17 @@
 package model.Charact;
-import model.Charact.Character;
+
 import model.Equip.*;
 
-public class Guard extends Character{
+public class Guard extends Character {
 
-    public Guard(){
+    public Guard() {
         this.setHP(25);
-        setChanceHit(17);
         this.setName("Guarda");
         this.setWeapon(new Spear());
-        this.setBackGroundImg("image/GateBackGround_Sprite.png");
-        this.setAggressiveness(17);
+        this.setStr(12);
+        this.setDex(10);
+        this.setDiceValue(16);
+        this.setImagem("image\\Guard_sprite.png");
+        this.setBackGround("image\\GateSprite.png");
     }
 }

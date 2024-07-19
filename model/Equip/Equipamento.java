@@ -1,18 +1,14 @@
 package model.Equip;
 
 public class Equipamento {
-    
-    private int Durabilidade;
+
     private String name;
-    private int Damege;
-
-    public int getDurabilidade() {
-        return Durabilidade;
-    }
-
-    public void setDurabilidade(int Durabilidade) {
-        this.Durabilidade = Durabilidade;
-    }
+    private int Damage;
+    private int speed;
+    private int Health;
+    private String type;
+    private String Special;
+    private int armo;
 
     public String getName() {
         return name;
@@ -22,13 +18,52 @@ public class Equipamento {
         this.name = name;
     }
 
-    public int getDamege() {
-        return Damege;
+    public int getDamage() {
+        return Damage;
     }
 
-    public void setDamege(int Damege) {
-        this.Damege = Damege;
+    public void setDamage(int Damage) {
+        this.Damage = Damage;
     }
 
+    public int getSpeed() {
+        return this.speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public int getHealth() {
+        return this.Health;
+    }
+
+    public void setHealth(int Health) {
+        this.Health = Health;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String Type) {
+        this.type = Type;
+    }
+
+    public String getSpecial() {
+        return Special;
+    }
+
+    public void setSpecial(String special) {
+        this.Special = special;
+    }
+
+    public int getArmo() {
+        return this.armo;
+    }
+
+    public void setArmo(int armo) {
+        this.armo = armo;
+    }
 
 }

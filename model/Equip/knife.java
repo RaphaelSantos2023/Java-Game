@@ -1,10 +1,11 @@
 package model.Equip;
 
-public class knife extends Equipamento{
+public class knife extends Equipamento {
 
-    public knife(){
+    public knife() {
         this.setName("knife");
-        this.setDamege(5);
-        this.setDurabilidade(10);
+        this.setDamage(5);
+        this.setType("Weapon");
+        this.setSpecial("Nenhuma habilidade especial");
     }
 }
