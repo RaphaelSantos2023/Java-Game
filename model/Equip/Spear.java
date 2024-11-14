@@ -5,6 +5,6 @@ public class Spear extends Equipamento {
         this.setName("Spear");
         this.setDamage(12);
         this.setType("Weapon");
-        this.setSpecial("Nenhuma habilidade especial");
+        this.setSpecial("Sangramento");
     }
 }

@@ -7,6 +7,7 @@ public class Character {
 
     private int hp;
     private String name;
+    private int Level = 1;
     private String StateEfect = "none";
     private Equipamento weapon;
     private int Dex, Str, Luck, Inte, HpMax, StrMax;
@@ -132,11 +133,24 @@ public class Character {
         return this.StrMax;
     }
 
+    public int getLevel(){
+        return this.Level;
+    }
+
+    public void setLevel(int level){
+        this.Level = level;
+    }
+
     public void setStrMx(int str) {
         this.StrMax = str;
     }
 
     public void Wear(Equipamento equip) {
         setStr(getStrMax() + equip.getArmo());
+    }
+
+    public void levelChange(){
+        setHpMax(this.HpMax*Level);
+        setHP(this.hp*Level);
     }
 }

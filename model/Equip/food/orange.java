@@ -6,8 +6,8 @@ public class orange extends Equipamento {
 
     public orange() {
         this.setName("Laranja");
-        this.setHealth(12);
+        this.setHealth(2);
         this.setType("eatable");
-        this.setSpecial("Laranja doce");
+        this.setSpecial("Uma Laranja doce");
     }
 }

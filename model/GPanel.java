@@ -1,13 +1,16 @@
 package model;
 
-import java.awt.Color;
-import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import java.awt.Color;
+import java.awt.GridLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+
+import java.awt.*;
 import java.io.File;
 import javax.imageio.ImageIO;
 
@@ -15,6 +18,7 @@ public class GPanel extends JPanel {
 
     private BufferedImage BackGround;
     private BufferedImage Sprite_C;
+    private Font TextFont = new Font("Times New Romans", Font.PLAIN, 26);
 
     public GPanel(String BQGround, String Sprite) {
         try {
@@ -56,11 +60,17 @@ public class GPanel extends JPanel {
         add(but4);
     }
 
-    public GPanel(JLabel label1, JLabel label2) {
+    public GPanel(JLabel label1, JLabel label2, int x, int y) {
         super();
         // Status do jogador
         setBackground(Color.blue);
-        setLayout(new GridLayout(2, 1));
+
+        label1.setForeground(Color.WHITE);
+        label2.setForeground(Color.WHITE);
+        label1.setFont(TextFont);
+        label2.setFont(TextFont);
+
+        setLayout(new GridLayout(x, y));
         add(label1);
         add(label2);
     }
