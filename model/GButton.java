@@ -36,7 +36,12 @@ public class GButton extends JButton {
     }
 
     public GButton(String Name) {
+        super();
         setText(Name);
+        setFont(new Font("Times New Romans", Font.PLAIN, 20));
+        setBackground(Color.BLACK);
+        setForeground(Color.white);
+        setFocusPainted(false);
     }
 
     public GButton(Equipamento equip, GPanel ItemInfo, Player player) {

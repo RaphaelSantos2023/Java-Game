@@ -111,13 +111,11 @@ public class Character {
         this.DiceValue = dice;
     }
 
-    public int Atack(Character chart) {
-        int damage = rand.nextInt(this.getWeapon().getDamage());
-        if (chart.getStr() > 0) {
-            chart.setStr(chart.getStr() - damage);
-        } else {
-            chart.setHP(chart.getHP() - damage);
-        }
+    public int Atack(Character enemy) {
+        int damage = rand.nextInt(this.getWeapon().getDamage()) + 2;
+
+        enemy.setHP(enemy.getHP()-damage);
+        
         return damage;
     }
 

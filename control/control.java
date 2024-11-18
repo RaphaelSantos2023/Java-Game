@@ -23,10 +23,11 @@ public class control {
 
         StrikerLog = Decision(striker, enemy, Comand);
         EnemyLog = Decision(enemy, striker, "Ataque");
+
         Defending = false;
         if (striker.getHP() > 0 && enemy.getHP() > 0) {
             return "- " + StrikerLog + "\n- " + EnemyLog;
-        } else if (striker.getHP() < 0) {
+        } else if (striker.getHP() <= 0) {
             return "- Você morreu";
         } else {
             return "- Você ganhou";
@@ -35,12 +36,13 @@ public class control {
     }
 
     public String Decision(Character striker, Character enemy, String Comand) {
+
         int Dice = rand.nextInt(19) + 1;
 
         if (Comand.equals("Ataque")) {
             if (Dice >= enemy.getDiceValue() && !Defending) {
                 int hit = striker.Atack(enemy);
-                return striker.getName() + " deu " + Integer.toString(hit) + " em " + enemy.getName();
+                return striker.getName() + " deu " + Integer.toString(hit);
             }
             return striker.getName() + " Falhou";
         } else {

@@ -142,6 +142,8 @@ public class Main {
 
         ActionPanel.add(PanelEnStatus);
         ActionPanel.add(PanelEnemy);
+
+        
     }
     
     public void SetInventory() {

@@ -94,6 +94,16 @@ public class ChoiceCross implements ActionListener {
                 }
                 break;
             case "CombatUI":
+
+                if (main.enemy != null) {
+                    main.EnemyHP.setText("HP: " + String.valueOf(main.enemy.getHP()));
+                    main.EnemyLevel.setText("Lv: " + String.valueOf(main.enemy.getLevel()));
+                } else {
+                    // Tratamento caso o inimigo ou algum dado esteja nulo
+                    main.EnemyHP.setText("HP: Não disponível");
+                    main.EnemyLevel.setText("Lv: Não disponível");
+                }
+
                 switch (choice) {
                     case "ch1":
                         main.TextAction.setText(main.control.Moviments(main.player, main.enemy, "Ataque"));
@@ -126,6 +136,7 @@ public class ChoiceCross implements ActionListener {
                         break;
                 }
         }
+
         if (main.player != null) {
             main.Hp.setText("HP: " + String.valueOf(main.player.getHP()));
             main.Money.setText("$: " + String.valueOf(main.player.getMoney()));
@@ -134,16 +145,5 @@ public class ChoiceCross implements ActionListener {
             main.Hp.setText("HP: Não disponível");
             main.Money.setText("$: Não disponível");
         }
-        
-        if (main.enemy != null) {
-            main.EnemyHP.setText("HP: " + String.valueOf(main.enemy.getHP()));
-            main.EnemyLevel.setText("Lv: " + String.valueOf(main.enemy.getLevel()));
-        } else {
-            // Tratamento caso o inimigo ou algum dado esteja nulo
-            main.EnemyHP.setText("HP: Não disponível");
-            main.EnemyLevel.setText("Lv: Não disponível");
-        }
-        
-        System.out.println("Choice"+ choice);
     }
 }
