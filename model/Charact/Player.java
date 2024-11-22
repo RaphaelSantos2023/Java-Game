@@ -1,3 +1,4 @@
+//Player.java
 package model.Charact;
 
 import model.Equip.*;
@@ -6,7 +7,12 @@ import model.Equip.food.*;
 
 public class Player extends Character {
 
-    ArrayList<Equipamento> Inventory = new ArrayList<Equipamento>();
+    private ArrayList<Equipamento> Inventory = new ArrayList<Equipamento>();
+    private String iconMax = "image\\player_sprites\\Player_HP_high_sprite.png";
+    private String iconMid = "image\\player_sprites\\Player_HP_mid_sprite.png";
+    private String iconLow = "image\\player_sprites\\Player_HP_low_sprite.png";
+
+    private String icon = "";
 
     public Player(int Dex, int Str, int Inte, int Luck) {
         this.setHP(10);
@@ -22,10 +28,25 @@ public class Player extends Character {
         this.setLuck(Luck);
         addInventory(new knife());
         addInventory(new orange());
+        this.icon = this.iconMax;
     }
 
     public void addInventory(Equipamento equip) {
         Inventory.add(equip);
+    }
+
+    public String getIcon(){
+        return this.icon;
+    }
+
+    public void setIcon(){
+        if(this.getHP() <= (this.getHpMax()/3)){
+            this.icon = this.iconLow;
+        }else if(this.getHP() <= (this.getHpMax()/3)*2){
+            this.icon = this.iconMid;
+        }else{
+            this.icon = this.iconMax;
+        }
     }
 
     public void removeInventory(int item) {

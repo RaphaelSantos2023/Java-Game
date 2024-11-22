@@ -1,3 +1,4 @@
+//GPanel.java
 package model;
 
 import javax.swing.JButton;
@@ -24,6 +25,14 @@ public class GPanel extends JPanel {
         try {
             // Carregue as duas imagens
             BackGround = ImageIO.read(new File(BQGround));
+            Sprite_C = ImageIO.read(new File(Sprite));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public GPanel(String Sprite) {
+        try {
             Sprite_C = ImageIO.read(new File(Sprite));
         } catch (Exception e) {
             e.printStackTrace();

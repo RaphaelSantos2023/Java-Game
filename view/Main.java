@@ -1,3 +1,4 @@
+//Main.java
 package view;
 import model.*;
 import model.Charact.*;
@@ -12,7 +13,7 @@ public class Main {
 
     public JFrame window;
     public Container con;
-    public GPanel StartPanel, ActionPanel, buttonsPanel, StatusPlayer, InventoryPanel, Itenspanel, InfoPanel;
+    public GPanel StartPanel, ActionPanel, buttonsPanel, StatusPlayer, InventoryPanel, Itenspanel, InfoPanel,HPicon;
     public GPanel PanelEnemy, PanelEnStatus;
 
     public JLabel TextLabel = new JLabel();
@@ -92,8 +93,10 @@ public class Main {
         ActionPanel.setLayout(null);
 
         StatusPlayer = new GPanel(Hp,Money,1,2);
+        StatusPlayer.setBounds(120, 20, 580, 70);
 
-        StatusPlayer.setBounds(50, 20, 650, 70);
+        HPicon = new GPanel(player.getIcon());
+        HPicon.setBounds(50,20,70,70);
 
         Btn2 = new GButton("ch2", Cross);
         Btn3 = new GButton("ch3", Cross);
@@ -110,6 +113,7 @@ public class Main {
 
         TextAction.setBounds(50, 90, 650, 250);
 
+        ActionPanel.add(HPicon);
         ActionPanel.add(StatusPlayer);
         ActionPanel.add(buttonsPanel);
         ActionPanel.add(TextAction);
