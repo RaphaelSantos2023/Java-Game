@@ -4,8 +4,9 @@ import model.Equip.Hand;
 
 public class Slime extends Character{
     
-    public Slime(){
+    public Slime(int level){
         this.setHP(5);
+        this.setLevel(level);
         this.setName("Slime");
         this.setWeapon(new Hand());
         this.setStr(1);
@@ -13,5 +14,6 @@ public class Slime extends Character{
         this.setDiceValue(5);
         this.setImagem("image\\slime_sprite.png");
         this.setBackGround("image\\GateSprite.png");
+        this.levelChange();
     }
 }

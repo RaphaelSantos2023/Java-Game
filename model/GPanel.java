@@ -5,14 +5,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import java.awt.Color;
-import java.awt.GridLayout;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 import java.awt.*;
 import java.io.File;
+
 import javax.imageio.ImageIO;
 
 public class GPanel extends JPanel {
@@ -25,14 +22,6 @@ public class GPanel extends JPanel {
         try {
             // Carregue as duas imagens
             BackGround = ImageIO.read(new File(BQGround));
-            Sprite_C = ImageIO.read(new File(Sprite));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public GPanel(String Sprite) {
-        try {
             Sprite_C = ImageIO.read(new File(Sprite));
         } catch (Exception e) {
             e.printStackTrace();

@@ -13,7 +13,7 @@ public class Main {
 
     public JFrame window;
     public Container con;
-    public GPanel StartPanel, ActionPanel, buttonsPanel, StatusPlayer, InventoryPanel, Itenspanel, InfoPanel,HPicon;
+    public GPanel StartPanel, ActionPanel, buttonsPanel, StatusPlayer, InventoryPanel, Itenspanel, InfoPanel;
     public GPanel PanelEnemy, PanelEnStatus;
 
     public JLabel TextLabel = new JLabel();
@@ -34,7 +34,7 @@ public class Main {
     public ChoiceCross Cross;
     public String position, PreviousPosition;
     public Font fontTitleLabel = new Font("Times New Romans", Font.PLAIN, 60);
-    public control control = new control();
+    public control control = new control(this);
 
     public Font TextFont = new Font("Times New Romans", Font.PLAIN, 28);
     public Player player;
@@ -93,10 +93,7 @@ public class Main {
         ActionPanel.setLayout(null);
 
         StatusPlayer = new GPanel(Hp,Money,1,2);
-        StatusPlayer.setBounds(120, 20, 580, 70);
-
-        HPicon = new GPanel(player.getIcon());
-        HPicon.setBounds(50,20,70,70);
+        StatusPlayer.setBounds(50, 20, 650, 70);
 
         Btn2 = new GButton("ch2", Cross);
         Btn3 = new GButton("ch3", Cross);
@@ -113,7 +110,6 @@ public class Main {
 
         TextAction.setBounds(50, 90, 650, 250);
 
-        ActionPanel.add(HPicon);
         ActionPanel.add(StatusPlayer);
         ActionPanel.add(buttonsPanel);
         ActionPanel.add(TextAction);
@@ -154,11 +150,11 @@ public class Main {
 
         ActionPanel.setVisible(false);
         InventoryPanel = new GPanel();
-
+        InventoryPanel.setLayout(new GridLayout(1,2));
+        
         Itenspanel = new GPanel();
-        Itenspanel.setBounds(50, 50, 150, 300);
+
         InfoPanel = new GPanel();
-        InfoPanel.setBounds(200, 50, 150, 300);
         InfoPanel.setVisible(false);
 
         control.SetItenspanel(InventoryPanel, Itenspanel, InfoPanel, ActionPanel, player);

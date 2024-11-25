@@ -3,7 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import view.Main;
-import model.Charact.Guard;
+import model.Charact.Slime;
 
 public class ChoiceCross implements ActionListener {
 
@@ -88,22 +88,12 @@ public class ChoiceCross implements ActionListener {
                 switch (choice) {
                     case "ch1":
                         System.out.println("Aqui");
-                        main.enemy = new Guard(5);
+                        main.enemy = new Slime(5);
                         main.CombatUI();
                         break;
                 }
                 break;
             case "CombatUI":
-
-                if (main.enemy != null) {
-                    main.EnemyHP.setText("HP: " + String.valueOf(main.enemy.getHP()));
-                    main.EnemyLevel.setText("Lv: " + String.valueOf(main.enemy.getLevel()));
-                } else {
-                    // Tratamento caso o inimigo ou algum dado esteja nulo
-                    main.EnemyHP.setText("HP: Não disponível");
-                    main.EnemyLevel.setText("Lv: Não disponível");
-                }
-
                 switch (choice) {
                     case "ch1":
                         main.TextAction.setText(main.control.Moviments(main.player, main.enemy, "Ataque"));
@@ -114,6 +104,15 @@ public class ChoiceCross implements ActionListener {
                         main.ChecarVitoria();
                         break;
                 }
+                if (main.enemy != null) {
+                    main.EnemyHP.setText("HP: " + String.valueOf(main.enemy.getHP()));
+                    main.EnemyLevel.setText("Lv: " + String.valueOf(main.enemy.getLevel()));
+                } else {
+                    // Tratamento caso o inimigo ou algum dado esteja nulo
+                    main.EnemyHP.setText("HP: Não disponível");
+                    main.EnemyLevel.setText("Lv: Não disponível");
+                }
+
                 break;
             case "Morte":
                 switch (choice) {

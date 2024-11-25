@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.Color;
+import java.awt.*;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 
@@ -15,7 +16,8 @@ public class GButton extends JButton {
     private JLabel Special = new JLabel();
     private JLabel Type = new JLabel();
     private JLabel StatusInfo = new JLabel();
-    GPanel Panel;
+    private GPanel Panel;
+    private Font fontInvent = new Font("Times New Romans", Font.PLAIN, 15);
 
     public GButton(String command, ActionListener ActL) {
         super();
@@ -44,7 +46,15 @@ public class GButton extends JButton {
         setFocusPainted(false);
     }
 
-    public GButton(Equipamento equip, GPanel ItemInfo, Player player) {
+    public GButton(Equipamento equip, GPanel ItemInfo, Player player, int itenId) {
+
+        super();
+        setFont(new Font("Times New Romans", Font.PLAIN, 20));
+        setBackground(Color.BLACK);
+        setForeground(Color.white);
+        setFocusPainted(false);
+        
+        ItemInfo.setLayout(new GridLayout(5,1));
 
         this.setText(equip.getName());
         this.addActionListener(new ActionListener() {
@@ -56,16 +66,12 @@ public class GButton extends JButton {
                 ItemInfo.revalidate();
                 ItemInfo.repaint();
                 GButton Action = new GButton();
-                NameItem.setText("Nome: " + equip.getName());
+                NameItem.setText(equip.getName());
                 NameItem.setBounds(15, 15, 50, 50);
-                NameItem.setFont(new Font("Times New Romans", Font.PLAIN, 15));
-
-                Special.setText("Habilidade: " + equip.getSpecial());
-                Special.setFont(new Font("Times New Romans", Font.PLAIN, 15));
-                Special.setBounds(65, 15, 50, 50);
+                NameItem.setFont(fontInvent);
 
                 Type.setText("Tipo: " + equip.getType());
-                Type.setFont(new Font("Times New Romans", Font.PLAIN, 15));
+                Type.setFont(fontInvent);
                 Type.setBounds(115, 15, 50, 50);
 
                 switch (equip.getType()) {
@@ -83,6 +89,10 @@ public class GButton extends JButton {
                         break;
                 }
 
+                Special.setText("Habilidade: " + equip.getSpecial());
+                Special.setFont(fontInvent);
+                Special.setBounds(65, 15, 50, 50);
+
                 StatusInfo.setBounds(165, 15, 50, 50);
                 Action.setBounds(215, 15, 50, 50);
 
@@ -96,7 +106,7 @@ public class GButton extends JButton {
 
                             case "eatable":
                                 player.eat(equip);
-                                player.removeInventory(equip);
+                                player.removeInventory(itenId);
                                 break;
 
                             case "Armo":
@@ -105,6 +115,12 @@ public class GButton extends JButton {
                         }
                     }
                 });
+
+                NameItem.setForeground(Color.white);
+                Special.setForeground(Color.white);
+                Type.setForeground(Color.white);
+                StatusInfo.setForeground(Color.white);
+                Action.setForeground(Color.white);
 
                 ItemInfo.add(NameItem);
                 ItemInfo.add(Special);
