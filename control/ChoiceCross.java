@@ -53,6 +53,20 @@ public class ChoiceCross implements ActionListener {
                 }
                 break;
             case "CrossRoad":
+                switch (choice) {
+                    case "ch1":
+                        main.GateFront();
+                    break;
+                    case "ch2":
+                        main.Tavern();
+                    break;
+                    case "ch3":
+                        main.GateFront();
+                    break;
+                    case "ch4":
+                        main.GateFront();
+                    break;
+                }
                 break;
             case "GuardTalk":
                 switch (choice) {
@@ -138,11 +152,11 @@ public class ChoiceCross implements ActionListener {
 
         if (main.player != null) {
             main.Hp.setText("HP: " + String.valueOf(main.player.getHP()));
-            main.Money.setText("$: " + String.valueOf(main.player.getMoney()));
+            main.Weapon.setText("Weapon: " + main.player.getWeapon().getName());
         } else {
             // Tratamento caso o player ou algum dado esteja nulo
             main.Hp.setText("HP: Não disponível");
-            main.Money.setText("$: Não disponível");
+            main.Weapon.setText("Weapon: Não disponível");
         }
     }
 }

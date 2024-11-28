@@ -20,7 +20,6 @@ public class Main {
     public JLabel DexLabel = new JLabel();
     public JLabel StrLabel = new JLabel();
     public JLabel Hp = new JLabel();
-    public JLabel Money = new JLabel();
     public JLabel Weapon = new JLabel();
     public JLabel LuckLabel = new JLabel();
     public JLabel InteLabel = new JLabel();
@@ -92,8 +91,8 @@ public class Main {
         ActionPanel = new GPanel();
         ActionPanel.setLayout(null);
 
-        StatusPlayer = new GPanel(Hp,Money,1,2);
-        StatusPlayer.setBounds(50, 20, 650, 70);
+        StatusPlayer = new GPanel(Hp,Weapon,1,2);
+        StatusPlayer.setBounds(50, 20, 680, 70);
 
         Btn2 = new GButton("ch2", Cross);
         Btn3 = new GButton("ch3", Cross);
@@ -108,7 +107,7 @@ public class Main {
         buttonsPanel.setLayout(new GridLayout(5, 1));
         buttonsPanel.setBackground(Color.black);
 
-        TextAction.setBounds(50, 90, 650, 250);
+        TextAction.setBounds(50, 90, 680, 250);
 
         ActionPanel.add(StatusPlayer);
         ActionPanel.add(buttonsPanel);
@@ -123,7 +122,7 @@ public class Main {
 
         buttonsPanel.setBounds(460, 340, 200, 200);
         
-        TextAction.setBounds(460, 110, 240, 230);
+        TextAction.setBounds(460, 110, 270, 230);
         TextAction.setFont(TextFont);
 
         PanelEnStatus = new GPanel(EnemyHP,EnemyLevel,1,2);
@@ -133,7 +132,7 @@ public class Main {
         EnemyLevel.setText("Lv: "+ String.valueOf(enemy.getLevel()));
 
         Hp.setText("HP: "+ String.valueOf(player.getHP()));
-        Money.setText("$: "+ String.valueOf(player.getMoney()));
+        Weapon.setText("Weapon: "+ player.getWeapon().getName());
 
         PanelEnemy = new GPanel(enemy.getBackGround(), enemy.getImagem());
         PanelEnemy.setBounds(50, 110, 400, 300);
@@ -142,8 +141,6 @@ public class Main {
 
         ActionPanel.add(PanelEnStatus);
         ActionPanel.add(PanelEnemy);
-
-        
     }
     
     public void SetInventory() {
@@ -220,14 +217,14 @@ public class Main {
     public void EntreRequest() {
         position = "EntreRequest";
         SetingTxt("Guard:Não deixamos qualquer um entrar.",
-                "*Tem algo que posso fazer?*", "*...*", "", "");
+                "Há algo a fazer?", "*...*", "", "");
     }
 
     public void ReciveQuest() {
         position = "ReciveQuest";
         SetingTxt(
                 "Guard:(Pensativo)Se você provar utilidade\npara a cidade ou receber a \nautorização de um morador, talvez",
-                "*Vou ver o que consigo*", "", "", "");
+                ">", "", "", "");
     }
 
     public void CrossRoad() {
@@ -240,6 +237,13 @@ public class Main {
     public void FightGuard() {
         position = "FightGuard";
         SetingTxt("Guard:Hora essa, seu ladrãosinho!", ">", "", "", "");
+    }
+
+    public void Tavern() {
+        position = "Tavern";
+        SetingTxt(
+                "O ar quente e bolorento invade seus poros.\nRachaduras e veias de musgo rastejam do chão \nao teto. Nos acentos e mesas roidas por cupins,\nalgumas pessoas conversavam. No balcão, \no balconista tem um olhar entediado e apatico",
+                "Ir ao bartender", "Ouvir conversas", "Voltar", "");
     }
 
 }

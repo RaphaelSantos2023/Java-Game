@@ -9,6 +9,7 @@ public class Equipamento {
     private String type;
     private String Special;
     private int armo;
+    private int cost;
 
     public String getName() {
         return name;
@@ -66,4 +67,11 @@ public class Equipamento {
         this.armo = armo;
     }
 
+    public int getCost(){
+        return this.cost;
+    }
+
+    public void setCost(int cost){
+        this.cost = cost;
+    }
 }

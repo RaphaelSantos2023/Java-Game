@@ -16,8 +16,7 @@ public class GButton extends JButton {
     private JLabel Special = new JLabel();
     private JLabel Type = new JLabel();
     private JLabel StatusInfo = new JLabel();
-    private GPanel Panel;
-    private Font fontInvent = new Font("Times New Romans", Font.PLAIN, 15);
+    private Font fontInvent = new Font("Times New Romans", Font.PLAIN, 20);
 
     public GButton(String command, ActionListener ActL) {
         super();
@@ -88,6 +87,7 @@ public class GButton extends JButton {
                         Action.setText("Vestir");
                         break;
                 }
+                StatusInfo.setFont(fontInvent);
 
                 Special.setText("Habilidade: " + equip.getSpecial());
                 Special.setFont(fontInvent);
@@ -123,11 +123,11 @@ public class GButton extends JButton {
                 Action.setForeground(Color.white);
 
                 ItemInfo.add(NameItem);
-                ItemInfo.add(Special);
                 ItemInfo.add(Type);
                 ItemInfo.add(StatusInfo);
+                ItemInfo.add(Special);
                 ItemInfo.add(Action);
-
+                
                 ItemInfo.setVisible(true);
             }
         });
