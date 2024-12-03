@@ -3,11 +3,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import view.Main;
-import model.Charact.Slime;
+import model.Charact.*;
+import model.Equip.food.*;
 
 public class ChoiceCross implements ActionListener {
 
     private Main main;
+    private control con;
 
     public ChoiceCross(Main main) {
         this.main = main;
@@ -55,7 +57,7 @@ public class ChoiceCross implements ActionListener {
             case "CrossRoad":
                 switch (choice) {
                     case "ch1":
-                        main.GateFront();
+                        main.FlorestEntrance();
                     break;
                     case "ch2":
                         main.Tavern();
@@ -81,6 +83,18 @@ public class ChoiceCross implements ActionListener {
                         break;
                 }
                 break;
+            case "FlorestEntrance":
+                switch (choice) {
+                    case "ch1":
+                        con = new control(main);
+                        main.enemy = con.ChooseEnemy(1);
+                        main.CombatUI();
+                    break;
+                    case "ch2":
+                        main.CrossRoad();
+                    break;
+                }
+                break;
             case "EntreRequest":
                 switch (choice) {
                     case "ch1":
@@ -101,8 +115,7 @@ public class ChoiceCross implements ActionListener {
             case "FightGuard":
                 switch (choice) {
                     case "ch1":
-                        System.out.println("Aqui");
-                        main.enemy = new Slime(5);
+                        main.enemy = new Guard(5);
                         main.CombatUI();
                         break;
                 }

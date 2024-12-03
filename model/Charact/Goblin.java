@@ -1,3 +1,4 @@
+//Goblin.java
 package model.Charact;
 
 import model.Equip.knife;
@@ -5,6 +6,7 @@ import model.Equip.knife;
 public class Goblin extends Character{
     
     public Goblin(int level){
+        super(level);
         this.setHP(10);
         this.setLevel(level);
         this.setName("Goblin");
@@ -13,7 +15,7 @@ public class Goblin extends Character{
         this.setDex(7);
         this.setDiceValue(10);
         this.setImagem("image\\Goblin.jpeg");
-        this.setBackGround("image\\FLOREST_Background.png");
+        this.setBackGround("image\\Forest_bg.png");
         this.levelChange();
     }
 }

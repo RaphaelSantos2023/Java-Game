@@ -33,12 +33,10 @@ public class GPanel extends JPanel {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
 
-        // Defina a posição e o tamanho da primeira imagem
         int x1 = 0, y1 = 0, width1 = 400, height1 = 300;
         g2d.drawImage(BackGround, x1, y1, width1, height1, null);
 
-        // Defina a posição e o tamanho da segunda imagem
-        int x2 = 100, y2 = 100, width2 = 200, height2 = 150;
+        int x2 = 100, y2 = 150, width2 = 200, height2 = 150;
         g2d.drawImage(Sprite_C, x2, y2, width2, height2, null);
     }
 

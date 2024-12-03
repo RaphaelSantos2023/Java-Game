@@ -1,3 +1,4 @@
+//Slime.java
 package model.Charact;
 
 import model.Equip.Hand;
@@ -5,6 +6,7 @@ import model.Equip.Hand;
 public class Slime extends Character{
     
     public Slime(int level){
+        super(level);
         this.setHP(5);
         this.setLevel(level);
         this.setName("Slime");
@@ -13,7 +15,7 @@ public class Slime extends Character{
         this.setDex(5);
         this.setDiceValue(5);
         this.setImagem("image\\slime_sprite.png");
-        this.setBackGround("image\\GateSprite.png");
+        this.setBackGround("image\\Forest_bg.png");
         this.levelChange();
     }
 }

@@ -10,6 +10,7 @@ public class Player extends Character {
     private ArrayList<Equipamento> Inventory = new ArrayList<Equipamento>();
 
     public Player(int Dex, int Str, int Inte, int Luck) {
+        super(1);
         this.setHP(10);
         this.setHpMax(10);
         this.setMoney(0);

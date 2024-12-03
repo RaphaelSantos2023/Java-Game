@@ -246,4 +246,9 @@ public class Main {
                 "Ir ao bartender", "Ouvir conversas", "Voltar", "");
     }
 
+    public void FlorestEntrance() {
+        position = "FlorestEntrance";
+        SetingTxt("As arvores vertiginosas se contorcem em labirintos de \ngalhos no alto. As moitas farfalham entre si. \nDe canto de olho, você vê figuras se esgueirando se \ncontorcendo para o escuro\n\nDeseja entrar?", "Entrar", "Sair", "", "");
+    }
+
 }

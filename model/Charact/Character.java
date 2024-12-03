@@ -1,3 +1,4 @@
+//Character.java
 package model.Charact;
 
 import model.Equip.*;
@@ -14,6 +15,10 @@ public class Character {
     private int money, DiceValue;
     private String imagem, BackGround;
     private Random rand = new Random();
+
+    public Character(int level){
+        this.Level = level;
+    }
 
     public int getDex() {
         return this.Dex;

@@ -3,7 +3,10 @@ package control;
 import model.GButton;
 import model.GPanel;
 import model.Charact.Character;
+import model.Charact.Goblin;
 import model.Charact.Player;
+import model.Charact.Slime;
+
 import java.awt.event.ActionListener;
 
 import view.Main;
@@ -104,6 +107,7 @@ public class control {
             ItemBtn.setPreferredSize(new Dimension(100, 30));  // Ajuste o tamanho conforme necessário
         }
     }
+    
     public void criarMapa(int linhas, int colunas, int qtdQ) {
         char[][] matriz = new char[linhas][colunas];
         for (int i = 0; i < linhas; i++) {
@@ -195,4 +199,12 @@ public class control {
         }
     }
 
+    public Character ChooseEnemy(int level){
+        Character[] listEnemy = {new Goblin(level), new Slime(level) };
+
+        Random rand = new Random();
+        int randomIndex = rand.nextInt(2);
+        return listEnemy[randomIndex];
+
+    }
 }

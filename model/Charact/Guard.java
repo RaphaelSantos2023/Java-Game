@@ -5,6 +5,7 @@ import model.Equip.*;
 public class Guard extends Character {
 
     public Guard(int level) {
+        super(level);
         this.setHP(25);
         this.setLevel(level);
         this.setName("Guarda");
