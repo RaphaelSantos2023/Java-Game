@@ -14,7 +14,7 @@ public class Goblin extends Character{
         this.setStr(3);
         this.setDex(7);
         this.setDiceValue(10);
-        this.setImagem("image\\Goblin.jpeg");
+        this.setImagem("image\\Goblin_sprite.png");
         this.setBackGround("image\\Forest_bg.png");
         this.levelChange();
     }
